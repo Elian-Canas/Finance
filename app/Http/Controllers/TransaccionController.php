@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Transaccion;
+
 use Illuminate\Http\Request;
 
 class TransaccionController extends Controller
@@ -12,15 +14,17 @@ class TransaccionController extends Controller
      */
     public function index()
     {
-        //
+        return view('transaccions.index', [
+            'transaccions' => Transaccion::latest()->paginate()
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Transaccion $transaccion)
     {
-        //
+        return view('transaccions.create', ['transaccion' => $transaccion, 'categorias' => Categoria::get()]);
     }
 
     /**
@@ -28,7 +32,18 @@ class TransaccionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transaccion = $request->user()->transaccion()->create([
+            'fecha' => $request->fecha,
+            'descripcion' => $request->descripcion,
+            'monto' => $request->monto,
+            'tipo' => $request->tipo,
+            'categoria_id' => $request->categoria_id,
+            'user_id' => auth()->id()
+
+    
+        ]);
+
+        return redirect()->route('transaccions.index');
     }
 
     /**
@@ -36,7 +51,7 @@ class TransaccionController extends Controller
      */
     public function show(Transaccion $transaccion)
     {
-        //
+        
     }
 
     /**
@@ -44,7 +59,7 @@ class TransaccionController extends Controller
      */
     public function edit(Transaccion $transaccion)
     {
-        //
+        return view('transaccions.edit', ['transaccion' => $transaccion, 'categorias' => Categoria::get()]);
     }
 
     /**
@@ -52,7 +67,26 @@ class TransaccionController extends Controller
      */
     public function update(Request $request, Transaccion $transaccion)
     {
-        //
+        $request->validate([
+            'fecha'=>'required',
+            'descripcion'=>'required',
+            'monto'=>'required',
+            'tipo'=>'required',
+            'categoria_id'=>'required'
+        ]);
+
+        $transaccion->update([
+            'fecha' => $request->fecha,
+            'descripcion' => $request->descripcion,
+            'monto' => $request->monto,
+            'tipo' => $request->tipo,
+            'categoria_id' => $request->categoria_id,
+            'user_id' => auth()->id()
+
+    
+        ]);
+
+        return redirect()->route('transaccions.index');
     }
 
     /**
@@ -60,6 +94,8 @@ class TransaccionController extends Controller
      */
     public function destroy(Transaccion $transaccion)
     {
-        //
+        $transaccion->delete();
+
+        return back();
     }
 }
