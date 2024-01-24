@@ -1,19 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransaccionController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('auth.login');
@@ -34,6 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('transaccions', TransaccionController::class)->middleware(['auth']);
+Route::resource('transaccions', TransaccionController::class)->except('show')->middleware(['auth']);
+
+Route::resource('categorias', CategoriaController::class)->except('show')->middleware(['auth']);
+
 
 require __DIR__.'/auth.php';

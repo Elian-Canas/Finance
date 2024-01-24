@@ -32,7 +32,16 @@ class TransaccionController extends Controller
      */
     public function store(Request $request)
     {
-        $transaccion = $request->user()->transaccion()->create([
+
+        $request->validate([
+            'fecha' => 'required',
+            'descripcion' => 'required',
+            'monto' => 'required',
+            'tipo' => 'required',
+            'categoria_id' => 'required'
+        ]);
+
+        $request->user()->transaccion()->create([
             'fecha' => $request->fecha,
             'descripcion' => $request->descripcion,
             'monto' => $request->monto,
@@ -40,7 +49,7 @@ class TransaccionController extends Controller
             'categoria_id' => $request->categoria_id,
             'user_id' => auth()->id()
 
-    
+
         ]);
 
         return redirect()->route('transaccions.index');
@@ -49,14 +58,7 @@ class TransaccionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaccion $transaccion)
-    {
-        
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Transaccion $transaccion)
     {
         return view('transaccions.edit', ['transaccion' => $transaccion, 'categorias' => Categoria::get()]);
@@ -68,11 +70,11 @@ class TransaccionController extends Controller
     public function update(Request $request, Transaccion $transaccion)
     {
         $request->validate([
-            'fecha'=>'required',
-            'descripcion'=>'required',
-            'monto'=>'required',
-            'tipo'=>'required',
-            'categoria_id'=>'required'
+            'fecha' => 'required',
+            'descripcion' => 'required',
+            'monto' => 'required',
+            'tipo' => 'required',
+            'categoria_id' => 'required'
         ]);
 
         $transaccion->update([
@@ -83,7 +85,7 @@ class TransaccionController extends Controller
             'categoria_id' => $request->categoria_id,
             'user_id' => auth()->id()
 
-    
+
         ]);
 
         return redirect()->route('transaccions.index');
