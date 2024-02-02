@@ -14,7 +14,7 @@ class CategoriaController extends Controller
     public function index()
     {
         return view('categorias.index', [
-            'categorias' => Categoria::latest()->paginate()
+            'categorias' => Categoria::all()->where('user_id', '=', auth()->user()->id)
         ]);
     }
 

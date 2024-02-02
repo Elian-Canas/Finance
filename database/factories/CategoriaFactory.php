@@ -17,7 +17,9 @@ class CategoriaFactory extends Factory
     public function definition(): array
     {
         return [
-            // 'nombre' =>$this->faker->bothify('????????')
+            'name' =>$this->faker->word(),
+            'user_id' => 1
+
         ];
     }
 }

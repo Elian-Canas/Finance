@@ -58,7 +58,7 @@
                         @endforelse
 
                     </table>
-                    {{ $transaccions->links() }}
+                    {{-- {{ $transaccions->links() }} --}}
                 </div>
             </div>
         </div>

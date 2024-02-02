@@ -13,11 +13,11 @@
                 <div class="p-6 text-gray-900 justify-between">
 
                     <table class=" container text-center mb-4">
-                        <thead class="items-center justify-between">
-                            <tr>
-                                <th scope="col">CATEGORIA</th>
-                                <th scope="col">EDITAR</th>
-                                <th scope="col">ELIMINAR</th>
+                        <thead class="items-center w-96 justify-between">
+                            <tr class="w-96">
+                                <th scope="col" class="w-2">CATEGORIA</th>
+                                <th scope="col" class="w-2">EDITAR</th>
+                                <th scope="col" class="w-2">ELIMINAR</th>
                             </tr>
                         </thead>
 
@@ -52,7 +52,7 @@
                         @endforelse
 
                     </table>
-                    {{ $categorias->links() }}
+                    {{-- {{ $categorias->links() }} --}}
                 </div>
             </div>
         </div>

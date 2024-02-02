@@ -2,10 +2,14 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+
+
+use App\Models\Categoria;
+use App\Models\Transaccion;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
@@ -32,5 +36,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'luz@gmail.com',
             'password' => bcrypt('password')
         ]);
+        Categoria::factory(1000)->create();
+        Transaccion::factory(1000)->create();
     }
 }

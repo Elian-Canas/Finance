@@ -17,12 +17,12 @@ class TransaccionFactory extends Factory
     public function definition(): array
     {
         return [
-            // 'monto' => $this->faker->numerify('######'),
-            // 'categoria_id' => $this->faker->numerify('######'),
-            // 'user_id' => $this->faker->numerify('######'),
-            // 'fecha' => $this->faker->numerify('######'),
-            // 'tipo' => $this->faker->numerify('######'),
-            // 'descripcion' => $this->faker->numerify('######')
+            'monto' => $this->faker->randomNumber(8, true),
+            'categoria_id' => $this->faker->randomNumber(3, false),
+            'user_id' => 1,
+            'fecha' => $this->faker->date('Y_m_d'),
+            'tipo' => $this->faker->numberBetween(1,2),
+            'descripcion' => $this->faker->sentence()
 
         ];
     }
