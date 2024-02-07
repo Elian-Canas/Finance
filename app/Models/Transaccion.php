@@ -46,15 +46,7 @@ class Transaccion extends Model
 
     public function grafica($id)
     {
-        // return Transaccion::query()->where('transaccions.user_id', '=', $id)
-        //     ->select('categoria_id AS categoria',  'monto')
-        //     ->join('categorias', 'categoria_id', '=', 'categorias.id')
-        //     ->groupBy('categorias_id')
-        //     ->paginate()
-        //     ->toSql()
-        // ;
-        // $user = User::find($id);
-        // $categorias = Categoria::get();
+     
 
         $categorias = DB::table('transaccions')
         ->select('name as categoria', 'monto')
@@ -63,28 +55,9 @@ class Transaccion extends Model
         ->groupBy('categorias.name')
         ->get();
         
-        // DB::table('transaccions')
-        //     ->select('monto')
-        //     ->groupBy('categoria_id')
-        //     ->get();
 
 
 
-
-        return 
-            // 'usuario' => $user,
-
-            // 'categoria' => $categorias,
-
-            $categorias
-
-
-
-            // 'suma' => $this->whenCounted('monto')
-            // 'id' => $this->when($request->user()->id),
-
-
-
-        ;
+        return $categorias;
     }
 }

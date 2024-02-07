@@ -6,7 +6,6 @@ use App\Models\Categoria;
 use App\Models\Transaccion;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TransaccionController extends Controller
 {
@@ -15,14 +14,11 @@ class TransaccionController extends Controller
      */
     public function index()
     {
-
-        // @dd(auth()->user()->id);
-
-        // $datos =Transaccion::all()->where('user_id', '=', auth()->user()->id);
+        $transaccion = Transaccion::all()->where('user_id', '=', auth()->user()->id)->sortByDesc('fecha');
 
 
         return view('transaccions.index', [
-            'transaccions' => Transaccion::all()->where('user_id', '=', auth()->user()->id)
+            'transaccions' => $transaccion
         ]);
     }
 
@@ -31,7 +27,7 @@ class TransaccionController extends Controller
      */
     public function create(Transaccion $transaccion)
     {
-        return view('transaccions.create', ['transaccion' => $transaccion, 'categorias' => Categoria::get()]);
+        return view('transaccions.create', ['transaccion' => $transaccion, 'categorias' => Categoria::get()->where('user_id', '=', auth()->user()->id)]);
     }
 
     /**
@@ -68,7 +64,7 @@ class TransaccionController extends Controller
 
     public function edit(Transaccion $transaccion)
     {
-        return view('transaccions.edit', ['transaccion' => $transaccion, 'categorias' => Categoria::get()]);
+        return view('transaccions.edit', ['transaccion' => $transaccion, 'categorias' => Categoria::get()->where('user_id', '=', auth()->user()->id)]);
     }
 
     /**
@@ -111,32 +107,15 @@ class TransaccionController extends Controller
     public function dashboard()
     {
         $modelo = new Transaccion;
-
-        // $ingreso = DB::table('transaccions')
-        // ->leftjoin('categorias', 'transaccions.categoria_id', '=', 'categoria.id')
-        // ->select('transaccions.*, categorias.name AS Categoria')
-        // ->where('t.tipo', '=', 'ingreso')
-        // ->where('user_id', '=', auth()->id())
-        // ->get();
-
-        // $ingreso = Transaccion::all()
-        // ->leftjoin('categorias', 'transaccions.categoria_id', '=', 'categoria.id')
-        // ->select('transaccions.*, categorias.name AS Categoria')
-        // ->where('t.tipo', '=', 'ingreso')
-        // ->where('user_id', '=', auth()->id())
-        // ->get();
-
-
-        $modelo = new Transaccion;
         $ingresos = $modelo->ingresos(auth()->user()->id);
         $gastos = $modelo->gastos(auth()->user()->id);
-        $grafica = $modelo->grafica(auth()->user()->id
-    );
+        $grafica = $modelo->grafica(auth()->user()->id);
 
-        
-        // @dd($ingresos, $gastos, $grafica);
 
-        return view('dashboard', [ 'ingresos' => $ingresos, 'gastos' => $gastos, 'grafica' => $grafica 
+        return view('dashboard', [
+            'ingresos' => $ingresos,
+            'gastos' => $gastos,
+            'grafica' => $grafica
         ]);
     }
 }

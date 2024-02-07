@@ -12,16 +12,16 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <table class="mb-4">
-                        <thead class="items-center justify-between">
+                    <table class="container text-center w-full mb-4 ">
+                        <thead>
                             <tr>
-                                <th scope="col">FECHA</th>
-                                <th scope="col">CATEGORIA</th>
-                                <th scope="col">DESCRIPCION</th>
-                                <th scope="col">VALOR</th>
-                                <th scope="col">TIPO</th>
-                                <th scope="col">EDITAR</th>
-                                <th scope="col">ELIMINAR</th>
+                                <th>FECHA</th>
+                                <th>CATEGORIA</th>
+                                <th>DESCRIPCION</th>
+                                <th>VALOR</th>
+                                <th>TIPO</th>
+                                <th>EDITAR</th>
+                                <th>ELIMINAR</th>
                             </tr>
                         </thead>
 
@@ -31,10 +31,10 @@
                             <tbody>
                                 <tr>
                                     <td class="px-6 py-4">{{ $transaccion->fecha }}</td>
-                                    <td class="px-6 py-4">{{ $transaccion->categoria->name }}</td>
-                                    <td class="px-6 py-4">{{ $transaccion->descripcion }}</td>
+                                    <td class="px-6 py-4 capitalize">{{ $transaccion->categoria->name }}</td>
+                                    <td class="px-6 py-4 capitalize">{{ $transaccion->descripcion }}</td>
                                     <td class="px-6 py-4">{{ $transaccion->monto }}</td>
-                                    <td class="px-6 py-4">{{ $transaccion->tipo }}</td>
+                                    <td class="px-6 py-4 capitalize ">{{ $transaccion->tipo }}</td>
                                     <td class="px-6 py-4">
                                         <a href="{{ route('transaccions.edit', $transaccion) }}" class="text-indigo-600">Editar</a>
                                     </td>

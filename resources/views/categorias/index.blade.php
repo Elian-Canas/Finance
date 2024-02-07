@@ -12,12 +12,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 justify-between">
 
-                    <table class=" container text-center mb-4">
-                        <thead class="items-center w-96 justify-between">
-                            <tr class="w-96">
-                                <th scope="col" class="w-2">CATEGORIA</th>
-                                <th scope="col" class="w-2">EDITAR</th>
-                                <th scope="col" class="w-2">ELIMINAR</th>
+                    <table class=" container text-center w-full mb-4 table-fixed">
+                        <thead class="">
+                            <tr>
+                                <th class="w-1/3">CATEGORIA</th>
+                                <th class="w-1/3">EDITAR</th>
+                                <th class="w-1/3">ELIMINAR</th>
                             </tr>
                         </thead>
 
@@ -26,7 +26,7 @@
 
                             <tbody>
                                 <tr>
-                                    <td class="px-6 py-4">{{ $categoria->name }}</td>
+                                    <td class="px-6 py-4 capitalize ">{{ $categoria->name }}</td>
                                     <td class="px-6 py-4">
                                         <a href="{{ route('categorias.edit', $categoria) }}"
                                             class="text-indigo-600">Editar</a>
