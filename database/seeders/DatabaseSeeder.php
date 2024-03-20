@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'luz@gmail.com',
             'password' => bcrypt('password')
         ]);
-        Categoria::factory(1000)->create();
-        Transaccion::factory(1000)->create();
+        // Categoria::factory(1000)->create();
+        // Transaccion::factory(1000)->create();
     }
 }

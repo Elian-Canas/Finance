@@ -15,9 +15,9 @@
                     <div class="container px-4 mx-auto">
                         <div class="row align-items-start g-col-6">
                             <div class="">
-                                <h4 class="py-3 text-dark-emphasis col-xl-8 container text-center">INGRESOS</h4>
+                                <h2 class="py-3 text-dark-emphasis col-xl-8 container text-center">INGRESOS</h2>
 
-                                <table class="table table-striped text-center ">
+                                <table class="container text-center w-full mb-4  ">
                                     <thead>
                                         <tr class="w-max p-2">
                                             <th scope="col">FECHA</th>
@@ -27,7 +27,7 @@
                                             <th scope="col">TIPO</th>
                                         </tr>
                                     </thead>
-                                    @foreach ($ingresos as $ingreso)
+                                    @forelse ($ingresos as $ingreso)
                                         <tbody>
                                             <tr>
                                                 <th scope="row">
@@ -46,7 +46,15 @@
                                                     {{ $ingreso->tipo }}
                                                 </td>
                                             </tr>
-                                    @endforeach
+
+                                        @empty
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 text-sm">
+                                                Upps! no hay ninguna publicacion disponible
+                                            </tr>
+                                        </tbody>
+                                    @endforelse
+
                                 </table>
                                 {{ $ingresos->links() }}
 
@@ -58,7 +66,7 @@
                         <div class="g-col-6">
                             <h4 class="py-3 text-dark-emphasis col-xl-4 container text-center">GASTOS</h4>
 
-                            <table class="table table-striped text-center">
+                            <table class="container text-center w-full mb-4 ">
                                 <thead>
                                     <tr>
                                         <th scope="col">FECHA</th>
@@ -93,6 +101,9 @@
                             {{ $ingresos->links() }}
 
                         </div>
+                        <div class="container text-center w-full mb-4 ">
+                            <h2 class="">Saldo Disponible = {{ $ingreso->monto - $gasto->monto }} </h2>
+                        </div>
                     </div>
 
 
@@ -100,9 +111,6 @@
 
 
 
-                    <div>
-                        <h3>Saldo Disponible = {{ $ingreso->monto - $gasto->monto }} </h3>
-                    </div>
 
                     <div>
                         <canvas id="myChart"></canvas>
