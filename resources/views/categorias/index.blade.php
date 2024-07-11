@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center justify-between">
             {{ __('Categorias') }}
 
-            <a href="{{ route('categorias.create') }}" class="text-xs bg-gray-800 text-white rounded px-2 py-1">Crear</a>
+            <a href="{{ route('categorias.create') }}" class="text-xs bg-blue-700 text-white rounded px-6 py-2">Crear</a>
         </h2>
     </x-slot>
 
