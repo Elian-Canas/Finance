@@ -113,9 +113,9 @@ class TransaccionController extends Controller
 
 
         return view('dashboard', [
-            'ingresos' => $ingresos,
-            'gastos' => $gastos,
-            'grafica' => $grafica
+            'ingresos' => $ingresos ,
+            'gastos' => $gastos ,
+            'grafica' => $grafica 
         ]);
     }
 }

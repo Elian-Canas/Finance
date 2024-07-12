@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             
-            $table->decimal('monto', $precision = 10, $scale = 0);
+            $table->decimal('monto', 10, 0);
             $table->date('fecha');
             $table->enum('tipo', ['ingreso', 'gasto']);
             $table->text('descripcion')->nullable();
