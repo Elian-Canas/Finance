@@ -1177,8 +1177,6 @@
                 "doctrine/dbal": ">=4.0",
                 "mockery/mockery": "1.6.8",
                 "phpunit/phpunit": ">=11.0.0",
-                "mockery/mockery": "1.6.8",
-                "phpunit/phpunit": ">=11.0.0",
                 "tightenco/collect": "<5.5.33"
             },
             "provide": {
@@ -1328,19 +1326,15 @@
         {
             "name": "laravel/prompts",
             "version": "v0.1.25",
-            "version": "v0.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
                 "reference": "7b4029a84c37cb2725fc7f011586e2997040bc95"
-                "reference": "ca6872ab6aec3ab61db3a61f83a6caf764ec7781"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/prompts/zipball/7b4029a84c37cb2725fc7f011586e2997040bc95",
                 "reference": "7b4029a84c37cb2725fc7f011586e2997040bc95",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/ca6872ab6aec3ab61db3a61f83a6caf764ec7781",
-                "reference": "ca6872ab6aec3ab61db3a61f83a6caf764ec7781",
                 "shasum": ""
             },
             "require": {
